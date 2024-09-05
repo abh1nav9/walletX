@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { mongoURI } = require("./config");
+const { mongoString } = require("./config");
 
-const mongoURI = mongoURI;
+const mongoURI = mongoString;
 
 async function connectToMongoDb() {
   return mongoose
