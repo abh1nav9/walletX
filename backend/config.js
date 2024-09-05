@@ -1,7 +1,4 @@
-const mongoString = "mongodb+srv://Abh1nav:Abh1nav@09@walletx.gxts7.mongodb.net/";
-const JWT_SECRET = "KingInTheNorth";
-
 module.exports = {
-    mongoString,
-    JWT_SECRET
-};
+    mongoString: "mongodb+srv://Abh1nav:Abh1nav%4009@walletx.gxts7.mongodb.net/?retryWrites=true&w=majority&appName=WalletX",
+    JWT_SECRET: "KingInTheNorth"
+  };
