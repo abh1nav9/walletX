@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         handjet: ["Handjet", "sans-serif"],
+        poppins: ["poppins", "sans-serif"]
       },
     },
   },
