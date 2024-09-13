@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // Importing Router and Route
+import { Routes, Route } from 'react-router-dom';
 import { themeState } from './theme/themeAtom'; 
+
 import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Wallet from './components/Wallet';
+
 import './index.css';
 
 const App = () => {
@@ -17,7 +19,7 @@ const App = () => {
   }, [theme]);
 
   return (
-    <Router>
+    
       <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
         <Routes>
           {/* Define Routes */}
@@ -27,7 +29,7 @@ const App = () => {
           <Route path="/wallet" element={<Wallet />} />
         </Routes>
       </div>
-    </Router>
+    
   );
 };
 
