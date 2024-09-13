@@ -11,12 +11,20 @@ function NavBar() {
   }, [theme]);
 
   return (
-    <div className='flex justify-around p-4'>
-      <div className="font-handjet font-extrabold text-4xl text-gray-900 dark:text-white">
-        <h1>Wallet X</h1>
-      </div>
-      <div>
-        <ThemeToggler />
+    <div className="w-full px-4 py-2">
+      <div className="flex justify-between items-center p-4 mx-4 sm:mx-6 md:mx-16 mt-6 bg-white bg-opacity-60 dark:bg-gray-900 dark:bg-opacity-30 backdrop-blur-md rounded-full border border-gray-300 dark:border-gray-700 shadow-lg transition duration-500 ease-in-out hover:shadow-xl">
+        
+        {/* Logo */}
+        <div className="font-handjet font-extrabold text-2xl sm:text-3xl md:text-4xl text-gray-900 dark:text-white">
+          <h1 className="transition-transform duration-300 ease-in-out transform hover:scale-110">
+            Wallet X
+          </h1>
+        </div>
+
+        {/* Theme Toggler */}
+        <div className="flex items-center">
+          <ThemeToggler />
+        </div>
       </div>
     </div>
   );
