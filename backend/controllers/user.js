@@ -13,42 +13,33 @@ const signupBody = zod.object({
 
 async function userSignup(req, res) {
   const { success } = signupBody.safeParse(req.body);
-  if (!success) {
-    return res.status(411).json({
-      message: "Email already taken or invalid inputs.",
+    if (!success) {
+        return res.status(400).json({
+            message: "Invalid inputs.",
+        });
+    }
+
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser) {
+        return res.status(400).json({
+            message: "Username already taken.",
+        });
+    }
+
+    const user = await User.create({
+        username: req.body.username,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
     });
-  }
 
-  const existingUser = await User.findOne({
-    username: req.body.username,
-  });
+    const userId = user._id;
+    const token = jwt.sign({ userId }, JWT_SECRET);
 
-  if (!existingUser) {
-    return res.status(411).json({
-      message: "Email already taken/Incorrect inputs",
+    res.status(201).json({
+        message: "User created successfully",
+        token,
     });
-  }
-
-  const user = await User.create({
-    username: req.body.username,
-    password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-  });
-
-  const userId = user._id;
-
-  const token = jwt.sign(
-    {
-      userId,
-    },
-    JWT_SECRET
-  );
-
-  res.json({
-    message: "User created successfully",
-    token: token,
-  });
 }
 
 const loginBody = zod.object({
