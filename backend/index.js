@@ -12,6 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
-app.use("/", allRoutes);
+app.use("/v1/api", allRoutes);
 
 app.listen(PORT, () => {console.log(`Server is running on PORT : ${PORT}`)});
